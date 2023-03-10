@@ -12,18 +12,18 @@
         <parameter name="version_br" value="102"></parameter>
         <parameter name="url" value="https://test14.mt-op.com/ausers/login_2?ReturnUrl=%2f"></parameter>
 
-<!--        <classes>-->
+        <classes>
 <!--            <class name="web.valid.ServiceCallExistsTest"></class>-->
 <!--            <class name="web.valid.ErrorEmailTest"></class>-->
 <!--            <class name="web.valid.ErrorPassTest"></class>-->
-<!--            <class name="web.success.NewSCTest"></class>-->
-<!--        </classes>-->
-        <packages>
+           <class name="web.success.NewSCTest"></class>
+       </classes>
+ <!--       <packages>
            <package name="web.valid"></package>
         </packages>
-
-        <classes>
-            <class name="web.valid.ErrorEmailTest"><methods><exclude name="new_customer"></exclude></methods></class>
-        </classes>
+-->
+<!--       <classes>-->
+<!--            <class name="web.valid.ErrorEmailTest"><methods><exclude name="new_customer"></exclude></methods></class>-->
+<!--        </classes>-->
     </test>
 </suite>

@@ -88,7 +88,7 @@ public class BasePage extends BaseTest {
         }
 
     protected void double_click(WebElement elem) {
-        System.out.println("click to element: "+ elem);
+        log.info("click to element: "+ elem);
         if(elem==null) {
             log.warn("element is Null");
         }
@@ -96,7 +96,7 @@ public class BasePage extends BaseTest {
             try {
                 wait.until(ExpectedConditions.visibilityOf(elem));
                 elem.click();
-                sleep(500);
+                sleep(1000);
                 elem.click();
             } catch (Exception e) {
                 log.warn("click Failed: " + e.getMessage());

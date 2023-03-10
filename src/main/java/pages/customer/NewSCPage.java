@@ -1,11 +1,16 @@
 package pages.customer;
 
 import base.BasePage;
+import org.apache.xmlbeans.impl.xb.xsdschema.FieldDocument;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -26,6 +31,9 @@ public class NewSCPage extends BasePage {
 
     @FindBy(css = ".vc_custom_heading") // text in popup 'איפו ניתן למצוא את מספר המכשיר?'
     private WebElement header_popup;
+
+    @FindBy (css = ".checkbox .acsDesc")
+    private List<WebElement> list_checkbox;
 
     @FindBy(css = ".modal-body button.close") // "x" button in popup
     private WebElement close_popup;
@@ -75,13 +83,33 @@ public class NewSCPage extends BasePage {
     @FindBy(css = "[id=faultreason]") // dropdown  "תיאור התקלה"
     private WebElement descFault;
 
+    @FindBy (how = How.XPATH, using = "//option[contains(text(),'כבל לא תקין')]") // option in dropdown "תיאור התקלה"
+    static WebElement reasonFault;
+
     @FindBy(css = "[id=faultDes]") // text field "פירוט התקלה"
     private WebElement detailsFault;
-
 
     @FindBy(css = ".accessories.col-md-6.col-sm-6 .checkbox__input .acsDesccheck")   // list of all checkboxes from "ציוד נלווה" field
     private List<WebElement> allElements;
 
+    //@FindBy(how=How.XPATH, using = "//span[contains(text(),'אשר את')]")  // term&conditions checkbox
+    //@FindBy(css = ".radio__label.ppTerm")
+
+    //private WebElement termCheck;
+
+
+    public List<WebElement> getList_checkbox() {
+        return list_checkbox;
+    }
+
+    @FindAll({
+            @FindBy(how=How.XPATH, using = "//span[contains(text(),'אשר את')]"),  // term&conditions checkbox
+            @FindBy(how=How.CSS, using = ".radio__label.ppTerm")
+    })
+    private WebElement termCheck;
+
+    @FindBy(css = ".srcBtnRMA")     // button "שלח"
+    private WebElement submit;
 
     //***  button "Create a new Service Call"  ***//
     public NewSCPage createNew_sc() {
@@ -201,9 +229,9 @@ public class NewSCPage extends BasePage {
         return this;
     }
 
-    // *** open dropdown "שיטת המשלוח" *** //
+    // *** open-close dropdown "שיטת המשלוח" *** //
     public NewSCPage select_shipMode() {
-        click(shipMode);
+        double_click(shipMode);
         log.info("delivery method dropdown");
         return this;
     }
@@ -211,6 +239,8 @@ public class NewSCPage extends BasePage {
     // *** open dropdown  "תיאור התקלה"  *** //
     public NewSCPage select_descFault() {
         click(descFault);
+        sleep(2000);
+        click(reasonFault);
         log.info("description of fault dropdown");
         return this;
     }
@@ -222,31 +252,28 @@ public class NewSCPage extends BasePage {
         return this;
     }
 
-    // *** select one checkbox from the list *** //
-    public NewSCPage equipment() {
-        for (WebElement ele : allElements) {
-            log.info("name element: " + ele.getText());
-            Random rand = new Random();
-            int list = rand.nextInt(allElements.size());
-            allElements.get(list).click();
-        }
-        return this;
+    // *** select checkbox from the equipment list *** //
+    public void select_equipment(String name) {
+        log.info("you try select checkbox with name: " + name);
+        WebElement elem = driver.findElement(By.xpath("//span[contains(text(),'"+name+"')]"));
+        click(elem);
     }
 
-    // term&conditions checkbox
-    @FindBy(css = "[id=pptermcheck]")
-    private WebElement termCheck;
+    public boolean chekIsSelect_equipment(String name) {
 
+        WebElement elem = driver.findElement(By.xpath("//span[contains(text(),'"+name+"')]"));
+     return   elem.isSelected();
+
+    }
+
+    // *** term and conditions checkbox *** //
     public NewSCPage termCondition_checkBox() {
         click(termCheck);
         log.info("term & cond");
         return this;
     }
 
-    // button "שלח"
-    @FindBy(css = ".srcBtnRMA")
-    private WebElement submit;
-
+    // *** button "שלח"  *** //
     public NewSCPage click_submit() {
         click(submit);
         return this;
@@ -264,6 +291,18 @@ public class NewSCPage extends BasePage {
          click(back_SClist);
          log.info("New Serivce Call: " +getText(new_ServiceCall)+ "is created");
          return this;
+     }
+
+     public List<String> eq () {
+         List<String> listEq = new ArrayList<String>();
+         listEq.add("רובוט");
+         listEq.add("ספ\"כ");
+         listEq.add("כבל שחור בספ\"כ");
+         listEq.add("עגלה");
+         listEq.add("שלט");
+         listEq.add("טרייד אין");
+         listEq.add("פירוק");
+         return listEq;
      }
 
 }
