@@ -32,22 +32,19 @@ public class NewSCPage extends BasePage {
     @FindBy(css = ".vc_custom_heading") // text in popup 'איפו ניתן למצוא את מספר המכשיר?'
     private WebElement header_popup;
 
-    @FindBy (css = ".checkbox .acsDesc")
-    private List<WebElement> list_checkbox;
-
     @FindBy(css = ".modal-body button.close") // "x" button in popup
     private WebElement close_popup;
 
-    @FindBy(css = "[id=submitserialtostartnewcall]") // start button "החל"
+    @FindBy(css = ".srcBtn.startSrc") // start button "החל"
     private WebElement start_button;
 
-    @FindBy(css = "[id=SERNUM]") // correct serial number
+    @FindBy(css = ".form-control.startInputSernu") // correct serial number
     private WebElement correct_sn;
 
-    @FindBy(css = "[id=SERNUM-error]") // INcorrect serial number (between 8-12)
+    @FindBy(css = "#SERNUM-error") // Notification about incorrect serial number (between 8-12)
     private WebElement incorrect_sn;
 
-    @FindBy(css = ".field-validation-error:nth-child(3)") // required field
+    @FindBy(css = ".field-validation-error:nth-child(3)") // notification about required field
     private WebElement require_sn;
 
     @FindBy(css = ".toast-title") // popup "s/n doesn't exists"
@@ -93,14 +90,11 @@ public class NewSCPage extends BasePage {
     private List<WebElement> allElements;
 
     //@FindBy(how=How.XPATH, using = "//span[contains(text(),'אשר את')]")  // term&conditions checkbox
-    //@FindBy(css = ".radio__label.ppTerm")
+    @FindBy(css = ".radio__label.ppTerm")
+    private WebElement term;
 
     //private WebElement termCheck;
 
-
-    public List<WebElement> getList_checkbox() {
-        return list_checkbox;
-    }
 
     @FindAll({
             @FindBy(how=How.XPATH, using = "//span[contains(text(),'אשר את')]"),  // term&conditions checkbox
@@ -114,7 +108,7 @@ public class NewSCPage extends BasePage {
     //***  button "Create a new Service Call"  ***//
     public NewSCPage createNew_sc() {
         click(new_sc);
-        log.info("Create a new service call");
+        log.info("Starting create a new service call");
         return this;
     }
 

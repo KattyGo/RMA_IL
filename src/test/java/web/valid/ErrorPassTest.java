@@ -17,7 +17,6 @@ public class ErrorPassTest {
             LoginDealerPage loginPage = new LoginDealerPage(getDriver()); // instance of login page
             DashboardPage dashboardPage = new DashboardPage(getDriver()); // instance of dashboard page
             NewSCPage newSCPage = new NewSCPage(getDriver());
-            BasePage basePage = new BasePage(getDriver());
             loginPage.type_userName("ishai.levi53345@may.com")
                     .type_password("xxxxxxxx")
                     .click_loginButton();

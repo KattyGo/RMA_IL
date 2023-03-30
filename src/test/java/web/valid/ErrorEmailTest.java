@@ -19,7 +19,6 @@ public class ErrorEmailTest {
             LoginDealerPage loginPage = new LoginDealerPage(getDriver()); // instance of login page
             DashboardPage dashboardPage = new DashboardPage(getDriver()); // instance of dashboard page
             NewSCPage newSCPage = new NewSCPage(getDriver());
-            BasePage basePage = new BasePage(getDriver());
             loginPage.type_userName("xxxxxxxxx@may.com")
                     .type_password("Gg8fc382")
                     .click_loginButton();

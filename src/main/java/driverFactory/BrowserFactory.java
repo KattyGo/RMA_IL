@@ -29,6 +29,7 @@ public class BrowserFactory {
 
             case "chrome":
                 WebDriverManager.chromedriver().setup(); // create chrome driver
+                System.setProperty("webdriver.http.factory", "jdk-http-client");
                 chromeOptions.addArguments("--disable-notifications");
                 driver = new ChromeDriver(chromeOptions);
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));

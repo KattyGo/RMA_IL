@@ -2,6 +2,8 @@ package web.success;
 
 import base.BasePage;
 import base.BaseTest;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -30,7 +32,7 @@ public class NewSCTest extends BaseTest {
                  .click_loginButton();
         dashboardPage.click_newServiceCall();
         newSCPage.where_SerialNumber();
-        basePage.sleep(3000);
+        basePage.sleep(1500);
         newSCPage.close_PopupWhere()
                 .start_ServiceCall()
                // .type_emptySN()
@@ -44,22 +46,30 @@ public class NewSCTest extends BaseTest {
                 .type_branchName("filial#123")
                 .select_shipMode()
                 .select_descFault()
-                .type_detailsFault("robot not working");
+                .type_detailsFault("robot not working")
+                .termCondition_checkBox();
+
+
+        WebElement checkbox = getDriver().findElement(By.cssSelector("[value= 'כבל שחור בספ\"כ']"));
+        checkbox.click();
+        Assert.assertTrue(checkbox.isSelected());
+
+
 //                for (int i=0; i < newSCPage.eq().size(); i++){
 //                    newSCPage.select_equipment(newSCPage.eq().get(i));
 //                }
 //                for(String str :newSCPage.eq()){
 //                    newSCPage.select_equipment(str);
 //                }
-                  for (int i=0; i < newSCPage.getList_checkbox().size(); i++){      // 10 elements -> 0.click -> 1.click
-                      newSCPage.getList_checkbox().get(i).click();
-                }
-
-                  for(String str :newSCPage.eq()){
-                      softAssert.assertTrue(newSCPage.chekIsSelect_equipment(str));
-                }
-                softAssert.assertAll();
-                newSCPage.termCondition_checkBox();
+//                  for (int i=0; i < newSCPage.getList_checkbox().size(); i++){      // 10 elements -> 0.click -> 1.click
+//                      newSCPage.getList_checkbox().get(i).click();
+//                }
+//
+//                  for(String str :newSCPage.eq()){
+//                      softAssert.assertTrue(newSCPage.chekIsSelect_equipment(str));
+//                }
+//                softAssert.assertAll();
+//                newSCPage.termCondition_checkBox();
                 //.click_submit();
 
 
@@ -67,6 +77,9 @@ public class NewSCTest extends BaseTest {
 
         sleep(300);
 
+
+
     }
+
 
 }

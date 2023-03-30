@@ -9,6 +9,11 @@ import pages.customer.NewSCPage;
 
 public class DashboardPage extends BasePage {
 
+    @FindBy(css = "h1#mainTit")
+    private WebElement title;
+    @FindBy(css = "#toggeleAdSearch>h5")
+    private WebElement title_search;
+
     @FindBy (css = "[id=mainTit]") // header "קריאות שירות" of Dashboard page
     private WebElement back_login;
 
@@ -99,7 +104,14 @@ public class DashboardPage extends BasePage {
     }
 
 
-
+   public String getText_title(){
+        log.info(" get text of page title");
+        return getText(title);
+   }
+   public String getText_title_search(){
+        log.info(" get text of page title search");
+        return getText(title_search);
+   }
 
 
 
