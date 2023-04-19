@@ -16,7 +16,7 @@
 <!--            <class name="web.valid.ServiceCallExistsTest"></class>-->
 <!--            <class name="web.valid.ErrorEmailTest"></class>-->
 <!--            <class name="web.valid.ErrorPassTest"></class>-->
-           <class name="web.success.NewSCTest"></class>
+           <class name="web.success.ListTicketTest"></class>
        </classes>
  <!--       <packages>
            <package name="web.valid"></package>
