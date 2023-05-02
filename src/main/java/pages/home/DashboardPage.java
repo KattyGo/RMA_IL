@@ -55,7 +55,7 @@ public class DashboardPage extends BasePage {
         return new NewSCPage(driver);
     }
 
-
+        //*** click on "יצרת קריאה חדשה" button ***//
     public NewSCPage click_newServiceCall () {
         wait.until(ExpectedConditions.visibilityOf(new_sc));
         click(new_sc);
@@ -63,6 +63,7 @@ public class DashboardPage extends BasePage {
         return new NewSCPage(driver);
     }
 
+        //*** click on "התנתקות" button ***//
     public DashboardPage back_loginPage () {
         wait.until(ExpectedConditions.visibilityOf(back_home));
         click(disconnect_button);
@@ -70,13 +71,14 @@ public class DashboardPage extends BasePage {
         return this;
     }
 
+        //*** click on back navigator button ***//
     public DashboardPage back_listSC () {
         click(back_home);
         log.info("Back to Login page");
         return this;
     }
 
-    //*** open dropdown "סטטוס קריאה"   ***//
+        //*** open dropdown "סטטוס קריאה"   ***//
     public DashboardPage click_status () {
         click(status_sc);
         log.info("Dropdown of statuses is open");
@@ -89,7 +91,7 @@ public class DashboardPage extends BasePage {
         return this;
     }
 
-    //*** click on "חיפוש" button ***//
+        //*** click on "חיפוש" button ***//
     public DashboardPage click_search () {
         click(search_button);
         log.info("Search is done");

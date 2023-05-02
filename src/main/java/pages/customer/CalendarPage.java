@@ -8,14 +8,12 @@ import org.openqa.selenium.WebElement;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Calendar extends BasePage {
+public class CalendarPage extends BasePage {
 
-
-    public Calendar(WebDriver driver) {
+    public CalendarPage(WebDriver driver) {
         super(driver);
 
     }
-
     private Map<Integer, String> daySelectors = new HashMap<>();
     private Map<Integer, String> weekSelectors = new HashMap<>();
 
@@ -38,11 +36,20 @@ public class Calendar extends BasePage {
         return weekSelector + " > ." + daySelector;
     }
 
-    public void chooseDate(int day, int week) {
+    public void chooseFromDate(int day, int week) {
         String cssSelector = createCssDate(day, week);
-        WebElement blabla = driver.findElement(By.id("fromdate"));
-        click(blabla);
-        log.info("==================================== "+cssSelector+" ==========================");
+        WebElement selectedDayFrom = driver.findElement(By.id("fromdate"));
+        click(selectedDayFrom);
+        log.info("================================ "+cssSelector+" ==========================");
+        WebElement dateElement = driver.findElement(By.cssSelector(cssSelector));
+        dateElement.click();
+    }
+
+    public void chooseToDate(int day, int week) {
+        String cssSelector = createCssDate(day, week);
+        WebElement selectedDayTo = driver.findElement(By.id("todate"));
+        click(selectedDayTo);
+        log.info("================================ "+cssSelector+" ==========================");
         WebElement dateElement = driver.findElement(By.cssSelector(cssSelector));
         dateElement.click();
     }

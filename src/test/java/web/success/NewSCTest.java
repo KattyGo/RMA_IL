@@ -7,13 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.customer.Calendar;
+import pages.customer.CalendarPage;
 import pages.customer.NewSCPage;
 import pages.home.DashboardPage;
 import pages.login.LoginDealerPage;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -25,7 +22,7 @@ public class NewSCTest extends BaseTest {
         DashboardPage dashboardPage = new DashboardPage(getDriver()); // instance of dashboard page
         NewSCPage newSCPage = new NewSCPage(getDriver());
         BasePage basePage = new BasePage(getDriver());
-        Calendar calendar =new Calendar(getDriver());
+        CalendarPage calendar =new CalendarPage(getDriver());
         SoftAssert softAssert = new SoftAssert();
 
 
@@ -33,11 +30,8 @@ public class NewSCTest extends BaseTest {
                  .type_password("Gg8fc382")
                  .click_loginButton();
 
-        calendar.chooseDate(7,4);
-        sleep(5000);
-
-
-
+        //================//==============
+       //================//==============
 
 
         dashboardPage.click_newServiceCall();

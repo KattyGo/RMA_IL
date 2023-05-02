@@ -16,12 +16,14 @@
 <!--            <class name="web.valid.ServiceCallExistsTest"></class>-->
 <!--            <class name="web.valid.ErrorEmailTest"></class>-->
 <!--            <class name="web.valid.ErrorPassTest"></class>-->
-           <class name="web.success.NewSCTest"></class>
-       </classes>
- <!--       <packages>
-           <package name="web.valid"></package>
-        </packages>
--->
+        <!--            <class name="web.success.NewSCTest"></class>-->
+
+            <class name="web.success.CalendarTest"></class>
+        </classes>
+         <!--       <packages>
+                   <package name="web.valid"></package>
+                </packages>
+        -->
 <!--       <classes>-->
 <!--            <class name="web.valid.ErrorEmailTest"><methods><exclude name="new_customer"></exclude></methods></class>-->
 <!--        </classes>-->
