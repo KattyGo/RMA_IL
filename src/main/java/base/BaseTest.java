@@ -28,6 +28,9 @@ public abstract class BaseTest {
         BrowserFactory browserFactory = new BrowserFactory(browserName);
         tdriver.set(browserFactory.createDriver());
         getDriver().get(url);
+        getDriver().get(url);
+        getDriver().get(url);
+        getDriver().get(url);
 
         }
 
