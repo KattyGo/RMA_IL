@@ -2,10 +2,11 @@ package web.success;
 
 import base.BasePage;
 import base.BaseTest;
+import enums.Status;
+import enums.selectByOption;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.customer.CalendarPage;
-import pages.customer.ListTablePage;
+import pages.customer.ListTicketPage;
 import pages.customer.NewSCPage;
 import pages.home.DashboardPage;
 import pages.login.LoginDealerPage;
@@ -20,17 +21,18 @@ public class ListTicketTest extends BaseTest {
         DashboardPage dashboardPage = new DashboardPage(getDriver()); // instance of dashboard page
         NewSCPage newSCPage = new NewSCPage(getDriver());
         BasePage basePage = new BasePage(getDriver());
-        ListTablePage ticketPage = new ListTablePage(getDriver());
+        ListTicketPage ticketPage = new ListTicketPage(getDriver());
         SoftAssert softAssert = new SoftAssert();
-
 
         loginPage.type_userName("ishai.levi53345@may.com")
                  .type_password("Gg8fc382")
                  .click_loginButton();
         ticketPage.click_tableLength()
-                .selectOptionBy(ListTablePage.selectByOption.VALUE, "-1" ); // open a list of the calls by Value, Text or Index (in dropdown)
+                .selectOptionBy(selectByOption.VALUE, "-1" ); // open a list of the calls by Value, Text or Index (in dropdown)
         sleep(3000);
-    }
+        ticketPage.check_status();
+        sleep(2000);
+        log.info("list of all serial number in status Open: "+ticketPage.getSerialNumberByStatus(Status.OPEN));
 
-
+        }
 }
