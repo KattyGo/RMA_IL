@@ -13,9 +13,9 @@ import org.testng.annotations.Parameters;
 public abstract class BaseTest {
 
     public static WebDriver driver;
-    public static ThreadLocal <WebDriver> tdriver = new ThreadLocal<>();
+    public  ThreadLocal <WebDriver> tdriver = new ThreadLocal<>();
 
-    public static synchronized WebDriver getDriver() {
+    public   WebDriver getDriver() {
         return tdriver.get();
     }
     public Logger log = LogManager.getRootLogger();
