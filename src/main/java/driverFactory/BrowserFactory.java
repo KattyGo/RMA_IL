@@ -36,7 +36,7 @@ public class BrowserFactory {
                 //******  set downloading files  ******//
                 //========================================
                 Map<String, Object> prefs =new HashMap<>();
-                String dir = String.valueOf(Paths.get(System.getProperty("user.dir"),"src/main/resources"));
+                String dir = String.valueOf(Paths.get(System.getProperty("user.dir"),"target/allure-results"));
                 prefs.put("download.default_directory",dir);
                 chromeOptions.setExperimentalOption("prefs",prefs);
                 //========================================

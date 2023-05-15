@@ -4,7 +4,7 @@
 
 
     <listeners>
-       <listener class-name="listener.MyListener"></listener>
+       <listener class-name="listeners.MyListener"></listener>
     </listeners>
 
     <test name="chrome">

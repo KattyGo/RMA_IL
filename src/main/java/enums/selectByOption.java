@@ -1,5 +1,5 @@
 package enums;
 
-public enum selectByOption {
-    VALUE, TEXT, INDEX;
+public enum SelectByOption{
+    VALUE,TEXT,INDEX ;
 }

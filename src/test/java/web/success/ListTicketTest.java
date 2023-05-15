@@ -1,16 +1,13 @@
 package web.success;
 
-import base.BasePage;
 import base.BaseTest;
 import enums.Status;
-import enums.selectByOption;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import pages.customer.ListTicketPage;
-import pages.customer.NewSCPage;
-import pages.home.DashboardPage;
 import pages.login.LoginDealerPage;
 
+import static enums.SelectByOption.VALUE;
 import static java.lang.Thread.sleep;
 
 public class ListTicketTest extends BaseTest {
@@ -18,21 +15,18 @@ public class ListTicketTest extends BaseTest {
     @Test (testName = "Login", description = "Login for DEALER",priority = 1)
     public void new_customer() throws InterruptedException {
         LoginDealerPage loginPage = new LoginDealerPage(getDriver()); // instance of login page
-        DashboardPage dashboardPage = new DashboardPage(getDriver()); // instance of dashboard page
-        NewSCPage newSCPage = new NewSCPage(getDriver());
-        BasePage basePage = new BasePage(getDriver());
         ListTicketPage ticketPage = new ListTicketPage(getDriver());
-        SoftAssert softAssert = new SoftAssert();
-
         loginPage.type_userName("ishai.levi53345@may.com")
                  .type_password("Gg8fc382")
                  .click_loginButton();
         ticketPage.click_tableLength()
-                .selectOptionBy(selectByOption.VALUE, "-1" ); // open a list of the calls by Value, Text or Index (in dropdown)
+                .selectOptionBy(VALUE, "-1" ); // open a list of the calls by Value, Text or Index (in dropdown)
         sleep(3000);
         ticketPage.check_status();
         sleep(2000);
         log.info("list of all serial number in status Open: "+ticketPage.getSerialNumberByStatus(Status.OPEN));
 
         }
+
+
 }

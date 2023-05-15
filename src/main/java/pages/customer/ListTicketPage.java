@@ -1,8 +1,8 @@
 package pages.customer;
 
 import base.BasePage;
+import enums.SelectByOption;
 import enums.Status;
-import enums.selectByOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static enums.SelectByOption.*;
 
 public class ListTicketPage extends BasePage {
 
@@ -75,7 +77,7 @@ public class ListTicketPage extends BasePage {
     }
 
         //*** method of select option how display a list of table ***///
-    public void selectOptionBy (selectByOption byOption, String value){
+    public void selectOptionBy (SelectByOption byOption, String value){
         Select select = new Select(tableLength);
         switch (byOption) {
             case VALUE:
