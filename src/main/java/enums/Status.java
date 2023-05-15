@@ -1,5 +1,5 @@
 package enums;
 
-public enum Status{
-    OPEN,CLOSE ;
+public enum Status {
+    OPEN, CLOSE;
 }

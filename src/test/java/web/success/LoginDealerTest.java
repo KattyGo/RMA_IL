@@ -23,11 +23,7 @@ public class LoginDealerTest extends BaseTest {
                         .click_clear()
                         ;
 
-
-
-
-
-        sleep(300);
+        sleep(3000);
 
     }
 
