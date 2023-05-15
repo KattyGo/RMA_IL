@@ -93,6 +93,14 @@ public class NewSCPage extends BasePage {
     @FindBy(css = ".radio__label.ppTerm")
     private WebElement term;
 
+    @FindBy(css = ".btn.btn-default.buttons-excel") // excel button
+    private WebElement excel_collect;
+
+    public NewSCPage click_excel(){
+        click(excel_collect);
+        return this;
+    }
+
     //private WebElement termCheck;
 
 

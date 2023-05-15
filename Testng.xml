@@ -18,7 +18,7 @@
 <!--            <class name="web.valid.ErrorPassTest"></class>-->
         <!--            <class name="web.success.NewSCTest"></class>-->
 
-            <class name="web.success.CalendarTest"></class>
+            <class name="web.success.CopyFileTest"></class>
         </classes>
          <!--       <packages>
                    <package name="web.valid"></package>

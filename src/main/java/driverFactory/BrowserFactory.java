@@ -8,7 +8,11 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class BrowserFactory {
@@ -28,9 +32,16 @@ public class BrowserFactory {
         switch (browserName) {
 
             case "chrome":
-                WebDriverManager.chromedriver().setup(); // create chrome driver
                 System.setProperty("webdriver.http.factory", "jdk-http-client");
+                //******  set downloading files  ******//
+                //========================================
+                Map<String, Object> prefs =new HashMap<>();
+                String dir = String.valueOf(Paths.get(System.getProperty("user.dir"),"src/main/resources"));
+                prefs.put("download.default_directory",dir);
+                chromeOptions.setExperimentalOption("prefs",prefs);
+                //========================================
                 chromeOptions.addArguments("--disable-notifications");
+                WebDriverManager.chromedriver().setup(); // create chrome driver
                 driver = new ChromeDriver(chromeOptions);
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
                 driver.manage().window().maximize();
