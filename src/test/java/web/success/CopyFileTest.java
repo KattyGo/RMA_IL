@@ -1,25 +1,15 @@
 package web.success;
 
-import base.BasePage;
 import base.BaseTest;
 import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-import pages.customer.CalendarPage;
 import pages.customer.NewSCPage;
-import pages.home.DashboardPage;
 import pages.login.LoginDealerPage;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-
-import static java.lang.Thread.sleep;
 
 public class CopyFileTest extends BaseTest {
 
@@ -31,18 +21,26 @@ public class CopyFileTest extends BaseTest {
                  .type_password("Gg8fc382")
                  .click_loginButton();
         newSCPage.click_excel();
-        attachFileToAllureReport("target/allure-results/Maytronics Warranty Calls.xlsx");
+        Thread.sleep(3000);
+        Assert.assertTrue(attachFileToAllureReport("target/allure-results/Maytronics Warranty Calls.xlsx"));
     }
 
 
 
-    public  void attachFileToAllureReport(String filePath) {
+    public  boolean attachFileToAllureReport(String filePath) {
         File file = new File(filePath);
+        if(file.exists()){
         try {
             byte[] content = Files.readAllBytes(file.toPath());
             Allure.getLifecycle().addAttachment("file Maytronics", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", ".xlsx", content);
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
+        }
+    }else {
+            log.error("File not found: "+ filePath);
+            return false;
         }
     }
 }
