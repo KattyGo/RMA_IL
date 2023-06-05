@@ -4,21 +4,17 @@
 
 
     <listeners>
-       <listener class-name="listeners.MyListener"></listener>
+       <listener class-name="listeners.AllureStepListener"></listener>
     </listeners>
 
     <test name="chrome">
-        <parameter name="browserName" value="chrome"></parameter>
-        <parameter name="version_br" value="102"></parameter>
-        <parameter name="url" value="https://test14.mt-op.com/ausers/login_2?ReturnUrl=%2f"></parameter>
-
         <classes>
 <!--            <class name="web.valid.ServiceCallExistsTest"></class>-->
 <!--            <class name="web.valid.ErrorEmailTest"></class>-->
 <!--            <class name="web.valid.ErrorPassTest"></class>-->
         <!--            <class name="web.success.NewSCTest"></class>-->
 
-            <class name="web.success.CopyFileTest"></class>
+            <class name="web.success.NewLogin"></class>
         </classes>
          <!--       <packages>
                    <package name="web.valid"></package>

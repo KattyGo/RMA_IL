@@ -24,11 +24,8 @@ public class CalendarTest extends BaseTest {
         BasePage basePage = new BasePage(getDriver());
         CalendarPage calendar =new CalendarPage(getDriver());
         SoftAssert softAssert = new SoftAssert();
+        loginPage.login("ishai.levi53345@may.com","Gg8fc382");
 
-
-        loginPage.type_userName("ishai.levi53345@may.com")
-                 .type_password("Gg8fc382")
-                 .click_loginButton();
         calendar.chooseFromDate(1,2);
         sleep(2000);
         calendar.chooseToDate(5,4);

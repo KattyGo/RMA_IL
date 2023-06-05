@@ -7,8 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.home.DashboardPage;
+import pages.interfaces.LoginInterface;
 
-public class LoginDealerPage extends BasePage {
+public class LoginDealerPage extends BasePage implements LoginInterface {
 
     public LoginDealerPage(WebDriver driver) {
         super(driver);
@@ -40,6 +41,7 @@ public class LoginDealerPage extends BasePage {
         return new DashboardPage(driver);
     }
 
+    @Step("Typing user name")
     public LoginDealerPage type_userName (String text) {
         log.info("Typing user name "+ text);
         type(userName, text);
@@ -59,8 +61,19 @@ public class LoginDealerPage extends BasePage {
         return new DashboardPage(driver);
     }
 
+
+
+
+
     public String get_logo_text () {
         return getText(logo);
+    }
+
+    @Override
+    public void login(String username, String password) {
+        type_userName(username);
+        type_password(password);
+        click_loginButton();
     }
 
 }
